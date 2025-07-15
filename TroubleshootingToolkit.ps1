@@ -1,5 +1,3 @@
-# PC Troubleshooting Toolkit - Clean Version
-
 function Pause-Script {
     Write-Host ""
     Read-Host "Press Enter to return to menu"
@@ -17,49 +15,69 @@ function Show-Menu {
     Write-Host ""
 }
 
+function Timestamp {
+    return Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+}
+
 do {
     Show-Menu
     $choice = Read-Host "Select an option (1-6)"
 
     switch ($choice) {
         "1" {
-            Write-Host "Flushing DNS cache..." -ForegroundColor Yellow
+            Write-Host "[$(Timestamp)] Flushing DNS cache..." -ForegroundColor Yellow
             ipconfig /flushdns
             Pause-Script
         }
 
         "2" {
-            Write-Host "Restarting Print Spooler..." -ForegroundColor Yellow
+            Write-Host "[$(Timestamp)] Restarting Print Spooler..." -ForegroundColor Yellow
             Restart-Service spooler -Force
-            Write-Host "Print Spooler restarted."
+            Write-Host "[$(Timestamp)] Print Spooler restarted." -ForegroundColor Green
             Pause-Script
         }
 
         "3" {
-            Write-Host "Pinging 8.8.8.8 to check connection..." -ForegroundColor Yellow
-            Test-Connection -ComputerName 8.8.8.8 -Count 4
+            Write-Host "[$(Timestamp)] Checking internet access..." -ForegroundColor Yellow
+            try {
+                $response = Invoke-WebRequest -Uri "https://www.google.com" -UseBasicParsing -TimeoutSec 5
+                if ($response.StatusCode -eq 200) {
+                    Write-Host "[$(Timestamp)] Internet connection appears to be working." -ForegroundColor Green
+                }
+            } catch {
+                Write-Host "[$(Timestamp)] Internet connection failed." -ForegroundColor Red
+            }
             Pause-Script
         }
 
         "4" {
             $proc = Read-Host "Enter the program name (e.g. chrome, notepad)"
-            Stop-Process -Name $proc -Force -ErrorAction SilentlyContinue
-            Write-Host "$proc closed (if running)."
+            try {
+                Stop-Process -Name $proc -Force -ErrorAction Stop
+                Write-Host "[$(Timestamp)] $proc closed successfully." -ForegroundColor Green
+            } catch {
+                Write-Host "[$(Timestamp)] Failed to close $proc. It might not be running or permission is denied." -ForegroundColor Red
+            }
             Pause-Script
         }
 
         "5" {
-            Write-Host "Getting Windows Update log..." -ForegroundColor Yellow
-            Get-WindowsUpdateLog
+            Write-Host "[$(Timestamp)] Getting Windows Update log..." -ForegroundColor Yellow
+            try {
+                Get-WindowsUpdateLog
+                Write-Host "[$(Timestamp)] Log generation complete. Check C:\Windows\WindowsUpdate.log" -ForegroundColor Green
+            } catch {
+                Write-Host "[$(Timestamp)] Failed to retrieve Windows Update log." -ForegroundColor Red
+            }
             Pause-Script
         }
 
         "6" {
-            Write-Host "Exiting Toolkit. Stay productive!" -ForegroundColor Green
+            Write-Host "[$(Timestamp)] Exiting Toolkit. Stay productive!" -ForegroundColor Green
         }
 
         default {
-            Write-Host "Invalid choice. Please enter 1 to 6." -ForegroundColor Red
+            Write-Host "[$(Timestamp)] Invalid choice. Please enter 1 to 6." -ForegroundColor Red
             Pause-Script
         }
     }
