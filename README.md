@@ -1,3 +1,4 @@
+![Toolkit Menu Screenshot](Capture.PNG)
 
 # 🧰 PC Troubleshooting Toolkit (PowerShell)
 
