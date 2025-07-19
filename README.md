@@ -1,62 +1,55 @@
-![Toolkit Menu Screenshot](Capture.PNG)
+🧰 PC Troubleshooting Toolkit (PowerShell)
+A compact, menu-driven PowerShell utility designed for Tier 1 IT Support Technicians to streamline common desktop troubleshooting tasks. Runs locally on Windows 10/11 and generates real-time logs to aid support documentation and ticket triage.
 
-# 🧰 PC Troubleshooting Toolkit (PowerShell)
+🔧 Toolkit Features & Visual Walkthrough
+Each option is paired with a real execution screenshot and action summary to give recruiters and users a clear understanding of the tool's workflow.
 
-A compact, menu-driven PowerShell utility for Tier 1 IT Support Technicians to streamline common desktop troubleshooting tasks. Designed to run locally on Windows 10/11 machines with real-time logging and feedback.
+Option	Task	Visual & Description
+1️⃣	Flush DNS Cache	<br>Clears stale DNS records to fix domain resolution errors and improve network response.
+2️⃣	Restart Print Spooler	<br>Restarts the spooler service to resolve stuck print jobs or offline printer statuses.
+3️⃣	Check Internet Connection	<br>Performs ping tests to identify connectivity issues and isolate local vs. WAN problems.
+4️⃣	Force-close Stuck Apps	<br>Ends frozen applications to restore system responsiveness and clear user sessions.
+5️⃣	Review Windows Update Logs	<br>Displays recent update activities and agent logs for troubleshooting failed patches.
+6️⃣	Exit Tool with Logging	(No screenshot)<br>Gracefully exits while appending timestamped entries to toolkit.log for documentation.
+All tasks write status output to toolkit.log for session tracking and reproducibility — useful for follow-ups and knowledge base creation.
 
-## 🔧 Toolkit Features
-
-| Option | Function                        |
-|--------|---------------------------------|
-| 1      | Flush DNS Cache                 |
-| 2      | Restart Print Spooler           |
-| 3      | Check Internet Connection (ping)|
-| 4      | Force-close Stuck Programs      |
-| 5      | View Windows Update Logs        |
-| 6      | Exit with Timestamped Logging   |
-
-All actions log to `toolkit.log` with timestamps and descriptive entries, aiding ticket documentation and post-support review.
-
-## 🧾 Log File Sample (Windows Update)
-
-Below is a captured `.log` output from the toolkit's Windows Update inspection utility. It highlights service shutdown sequencing and update status — useful for remote ticket validation and historical support review.
-
-![WindowsUpdateLog](/WindowsUpdateLog.png)
-
-Key Insights:
-- No pending updates detected
-- Agent and COM API uninitialization processes logged
-- Timestamped shutdown sequence enables reproducibility and pattern recognition
+📋 Log File Example
+Here’s a sample .log output from the Windows Update inspection task:
 
 
-## 📂 File Overview
+🧠 Key Insights:
 
-```
+No pending updates identified
+
+Clean shutdown sequence of update agents and services
+
+Entries timestamped for support documentation and ticket validation
+
+📁 File Structure
 PC-Troubleshooting-Toolkit/
 ├── Toolkit.ps1           # Main script
-├── toolkit.log           # Log file (created during execution)
-└── README.md             # This documentation file
-```
+├── toolkit.log           # Log file created at runtime
+├── assets/               # Screenshots and banner images
+└── README.md             # Documentation file (this one)
+🚀 How to Use
+Launch PowerShell as Administrator
 
-## 🚀 Usage Instructions
+Navigate to this directory
 
-1. Open PowerShell as Administrator  
-2. Navigate to the script directory  
-3. Run the script:
-```powershell
+Run the tool:
+
+powershell
 .\Toolkit.ps1
-```
-4. Use numeric keys to select troubleshooting options
+Use number keys to select tasks — output appears inline and in the log file
 
-## ✅ Requirements
+✅ Requirements
+Windows 10 or Windows 11
 
-- Windows 10 or Windows 11  
-- PowerShell 5.x or higher  
-- Internet access (for connectivity check)  
-- Admin privileges (for spooler, update logs, and process control)
+PowerShell 5.x or higher
 
-## ✍️ Author
+Admin privileges required for spooler control, log access, and app termination
 
-**Shawn Sutton**  
-🎯 Aspiring IT Support Specialist | CompTIA A+ (In Progress)  
-📂 GitHub Portfolio
+Internet connection (for Option 3 testing)
+
+✍️ Author
+Shawn C. Sutton 📍 Remote IT Support Candidate | CourseCareers Grad | CompTIA A+ (In Progress) 🔗 GitHub Portfolio
