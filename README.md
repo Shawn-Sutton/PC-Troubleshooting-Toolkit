@@ -1,55 +1,79 @@
+![Capture](assets/Capture.PNG)
+
 🧰 PC Troubleshooting Toolkit (PowerShell)
 A compact, menu-driven PowerShell utility designed for Tier 1 IT Support Technicians to streamline common desktop troubleshooting tasks. Runs locally on Windows 10/11 and generates real-time logs to aid support documentation and ticket triage.
 
 🔧 Toolkit Features & Visual Walkthrough
-Each option is paired with a real execution screenshot and action summary to give recruiters and users a clear understanding of the tool's workflow.
+Each feature includes a live screenshot and outcome summary to showcase real execution and practical value.
 
-Option	Task	Visual & Description
-1️⃣	Flush DNS Cache	<br>Clears stale DNS records to fix domain resolution errors and improve network response.
-2️⃣	Restart Print Spooler	<br>Restarts the spooler service to resolve stuck print jobs or offline printer statuses.
-3️⃣	Check Internet Connection	<br>Performs ping tests to identify connectivity issues and isolate local vs. WAN problems.
-4️⃣	Force-close Stuck Apps	<br>Ends frozen applications to restore system responsiveness and clear user sessions.
-5️⃣	Review Windows Update Logs	<br>Displays recent update activities and agent logs for troubleshooting failed patches.
-6️⃣	Exit Tool with Logging	(No screenshot)<br>Gracefully exits while appending timestamped entries to toolkit.log for documentation.
-All tasks write status output to toolkit.log for session tracking and reproducibility — useful for follow-ups and knowledge base creation.
+🖼️ 1. Restart Print Spooler
+markdown
+![Restart Print Spooler](assets/PrinterSpooler.png)
 
-📋 Log File Example
-Here’s a sample .log output from the Windows Update inspection task:
+Resolves printer job stuck issues by restarting the spooler service.
+
+🌐 2. DNS Flush
+markdown
+![DNS Flush](assets/DNSFlush.png)
+
+Clears DNS cache to fix domain resolution problems.
+
+📶 3. Internet Connectivity Check
+markdown
+![Internet Check](assets/Internetcheck.png)
+
+Pings common addresses to test live internet status.
+
+🛑 4. Kill Command
+markdown
+![Kill Command](assets/Killcommand.png)
+
+Forces app or service termination — useful in freeze scenarios.
+
+🔄 5. Windows Update Log Access
+markdown
+![Update Log](assets/WindowsUpdateLog.png)
+
+Displays recent Windows Update activity for troubleshooting.
 
 
-🧠 Key Insights:
+🧾 Log File Sample
+Here’s a sample .log entry from Option 5 (Windows Update):
 
-No pending updates identified
+Highlights:
 
-Clean shutdown sequence of update agents and services
+No pending updates found
 
-Entries timestamped for support documentation and ticket validation
+Clean shutdown of update agents
 
-📁 File Structure
-PC-Troubleshooting-Toolkit/
+Timestamped entries for ticket validation and audit trail
+
+📁PC-Troubleshooting-Toolkit/
 ├── Toolkit.ps1           # Main script
-├── toolkit.log           # Log file created at runtime
+├── toolkit.log           # Execution log output
 ├── assets/               # Screenshots and banner images
-└── README.md             # Documentation file (this one)
+└── README.md             # This file
+
+
 🚀 How to Use
-Launch PowerShell as Administrator
+Open PowerShell as Administrator
 
-Navigate to this directory
+Navigate to the script directory
 
-Run the tool:
+Run the toolkit:
 
 powershell
 .\Toolkit.ps1
-Use number keys to select tasks — output appears inline and in the log file
+Choose actions with number keys and view results inline + in toolkit.log
 
 ✅ Requirements
-Windows 10 or Windows 11
+Windows 10/11
 
-PowerShell 5.x or higher
+PowerShell 5.x or newer
 
-Admin privileges required for spooler control, log access, and app termination
+Admin rights for spooler and update access
 
-Internet connection (for Option 3 testing)
+Internet connection (for connectivity check)
 
 ✍️ Author
-Shawn C. Sutton 📍 Remote IT Support Candidate | CourseCareers Grad | CompTIA A+ (In Progress) 🔗 GitHub Portfolio
+Shawn C. Sutton 📍 Remote IT Support Candidate | CourseCareers IT Track (In Progress) | CompTIA A+ (Studying for 2026) 🔗 GitHub Portfolio
