@@ -17,6 +17,18 @@ A compact, menu-driven PowerShell utility for Tier 1 IT Support Technicians to s
 
 All actions log to `toolkit.log` with timestamps and descriptive entries, aiding ticket documentation and post-support review.
 
+## 🧾 Log File Sample (Windows Update)
+
+Below is a captured `.log` output from the toolkit's Windows Update inspection utility. It highlights service shutdown sequencing and update status — useful for remote ticket validation and historical support review.
+
+![WindowsUpdateLog](/WindowsUpdateLog.png)
+
+Key Insights:
+- No pending updates detected
+- Agent and COM API uninitialization processes logged
+- Timestamped shutdown sequence enables reproducibility and pattern recognition
+
+
 ## 📂 File Overview
 
 ```
